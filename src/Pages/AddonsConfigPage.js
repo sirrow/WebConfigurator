@@ -138,7 +138,8 @@ const schema = yup.object().shape({
 	SliderSOCDInputEnabled: yup.number().required().label('Slider SOCD Input Enabled'),
 	PlayerNumAddonEnabled: yup.number().required().label('Player Number Add-On Enabled'),
 	ReverseInputEnabled: yup.number().required().label('Reverse Input Enabled'),
-	TurboInputEnabled: yup.number().required().label('Turbo Input Enabled')
+	TurboInputEnabled: yup.number().required().label('Turbo Input Enabled'),
+	FourWayExclusiveEnabled: yup.number().required().label('Four Way Exclusive Enabled')
 });
 
 const defaultValues = {
@@ -197,7 +198,8 @@ const defaultValues = {
 	SliderSOCDInputEnabled: 0,
 	PlayerNumAddonEnabled: 0,
 	ReverseInputEnabled: 0,
-	TurboInputEnabled: 0
+	TurboInputEnabled: 0,
+	FourWayExclusiveEnabled: 0
 };
 
 let usedPins = [];
@@ -333,6 +335,8 @@ const FormContext = () => {
 			values.ReverseInputEnabled = parseInt(values.ReverseInputEnabled);
 		if (!!values.TurboInputEnabled)
 			values.TurboInputEnabled = parseInt(values.TurboInputEnabled);
+		if (!!values.FourWayExclusiveEnabled)
+			values.FourWayExclusiveEnabled = parseInt(values.FourWayExclusiveEnabled);
 	}, [values, setValues]);
 
 	return null;
@@ -1166,6 +1170,23 @@ export default function AddonsConfigPage() {
 							isInvalid={false}
 							checked={Boolean(values.SliderSOCDInputEnabled)}
 							onChange={(e) => {handleCheckbox("SliderSOCDInputEnabled", values); handleChange(e);}}
+						/>
+					</Section>
+					<Section title ="Four Way Exclusive">
+						<div
+							id="FourWayExclusiveOptions"
+							hidden={!values.FourWayExclusiveEnabled}>
+								Enabled
+						</div>
+						<FormCheck
+							label="Enabled"
+							type="switch"
+							id="FourWayExclusiveButton"
+							reverse="true"
+							error={false}
+							isInvalid={false}
+							checked={Boolean(values.FourWayExclusiveEnabled)}
+							onChange={(e) => {handleCheckbox("FourWayExclusiveEnabled", values); handleChange(e);}}
 						/>
 					</Section>
 					<div className="mt-3">

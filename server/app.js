@@ -211,6 +211,7 @@ app.get('/api/getAddonsOptions', (req, res) => {
 		PlayerNumAddonEnabled: 1,
 		ReverseInputEnabled: 1,
 		TurboInputEnabled: 1,
+		FourWayExclusiveEnabled: 1,
 		usedPins,
 	});
 });
